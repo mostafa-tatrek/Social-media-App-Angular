@@ -1,0 +1,7 @@
+<!-- src/app/auth/reset-request/reset-request.component.html -->
+<div class="container mt-4">
+  <h3>Forgot Password</h3>
+  <input [(ngModel)]="email" placeholder="Enter your email" class="form-control mb-2" />
+  <button (click)="requestReset()" class="btn btn-primary">Send Reset Link</button>
+  <div class="mt-2 text-success" *ngIf="message">{{ message }}</div>
+</div>

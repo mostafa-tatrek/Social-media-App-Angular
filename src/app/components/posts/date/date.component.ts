@@ -15,7 +15,14 @@ export class DateComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.user = this.userService.getUserById(this.userId);
+    this.userService.getUserById(this.userId).subscribe(
+      (user: Iuser) => {
+        this.user = user;
+      },
+      (error) => {
+        console.error('Error fetching user:', error);
+      }
+    );
   }
 }
 

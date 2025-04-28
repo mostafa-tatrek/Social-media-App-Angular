@@ -11,10 +11,14 @@ import { IPost } from './models/post.model';
 import { FormComponent } from './components/form/form.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ResetRequestComponent } from './auth/reset-request/reset-request.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, PostsComponent, DateComponent, FormComponent, LoginComponent, RegisterComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  declarations: [AppComponent, NavbarComponent, PostsComponent, DateComponent, FormComponent, LoginComponent, RegisterComponent, ResetRequestComponent, ResetPasswordComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

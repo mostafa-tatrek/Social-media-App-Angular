@@ -12,13 +12,17 @@ export class LoginComponent {
   password: string = '';
 
   constructor(private userService: UserService, private router: Router) {}
-
   login() {
-    if (this.userService.login(this.name, this.password)) {
-      alert('Login successful!');
-      this.router.navigate(['/']);
-    } else {
-      alert('Invalid credentials');
-    }
+    this.userService.login(this.name, this.password).subscribe(users => {
+      const user = users.find(u => u.name === this.name && u.password === this.password);
+      if (user) {
+        this.userService.setLoggedInUser(user);
+        alert('Login successful!');
+        this.router.navigate(['posts']);
+      } else {
+        alert('Invalid credentials');
+      }
+    });
   }
+
 }

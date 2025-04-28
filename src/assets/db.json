@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "maostafa tarek",
+      "imgurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJqQNJt7Lz7TkAx-GvujbqXgpy0yrB0hhlGg&s",
+      "password": "123"
+    },
+    {
+      "id": "2",
+      "name": "mana ali",
+      "imgurl": "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg",
+      "password": "356"
+    },
+    {
+      "id": "3",
+      "name": "ali",
+      "imgurl": "https://pbs.twimg.com/media/DknP7NcWwAIiYN-.jpg",
+      "password": "789654"
+    },
+    {
+      "id": 4,
+      "name": "mostafa",
+      "imgurl": "https://www.okaz.com.sa/uploads/images/2023/07/03/2129963.jpg",
+      "password": "123456"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "userId": 1,
+      "body": "Some quick example text to build on the card title and make up the bulk of the card's",
+      "imgurl": "https://www.okaz.com.sa/uploads/images/2023/07/03/2129963.jpg",
+      "islike": true,
+      "date": "2025-04-27T00:00:00.000Z",
+      "likes": 2,
+      "comments": [
+        "nnnn",
+        "nice"
+      ]
+    },
+    {
+      "id": "2",
+      "userId": 2,
+      "body": "Some quick example text to build on the card title and make up the bulk of the card's",
+      "imgurl": "https://www.letemsvetemapplem.eu/wp-content/uploads/2017/10/steve-jobs-photo.jpg",
+      "islike": true,
+      "date": "2025-04-27T00:00:00.000Z",
+      "likes": 1,
+      "comments": [
+        "great job"
+      ]
+    }
+  ]
+}

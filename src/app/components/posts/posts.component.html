@@ -1,44 +1,62 @@
-<!-- <app-date/> -->
 <div class="card-container">
-<div class="card-grid">
-  <div *ngFor="let post of posts" class="card" style="width: 18rem">
-    <app-date [userId]="post.userId" [date_cr]="post.date"></app-date>
-    <img [src]="post.imgurl" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <p class="card-text">{{ post.body }}</p>
-    </div>
-    <div class="d-grid gap-2">
-      <button
-        class="btn"
-        [ngClass]="{
-          'btn-primary': post.islike,
-          'btn-outline-drak': !post.islike
-        }"
-        (click)="onButtonClick(post)"
-      >
-      Like ({{ post.likes }})
-      </button>
-      <button class="btn btn-danger" (click)="onButtonClickdelete(post.id,post.userId)">
-        Delete
-      </button>
-    </div>
-    <div class="mb-3">
-      <label for="comment" class="form-label">Comment</label>
-      <textarea class="form-control" id="comment" rows="2"
-                [(ngModel)]="comment" placeholder="Enter your comment"></textarea>
-      <button class="btn btn-success mt-2" (click)="addComment(post)">Add Comment</button>
-    </div>
+  <div class="card-grid">
+    <div *ngFor="let post of posts" class="card shadow-lg">
+      <app-date [userId]="post.userId" [date_cr]="post.date"></app-date>
 
-    <div *ngIf="post.comments.length > 0">
-      <h6>Comments:</h6>
-      <ul>
-        <li *ngFor="let comment of post.comments">{{ comment }}</li>
-      </ul>
-    </div>
+      <img [src]="post.imgurl" class="card-img-top" alt="..." />
 
+      <div class="card-body">
+        <p class="card-text">{{ post.body }}</p>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <button
+          class="btn"
+          [ngClass]="{
+            'btn-primary': post.islike,
+            'btn-outline-dark': !post.islike
+          }"
+          (click)="onButtonClick(post)"
+        >
+          Like ({{ post.likes }})
+        </button>
+
+        <button
+          class="btn btn-outline-danger btn-sm"
+          (click)="onButtonClickdelete(post.id, post.userId)"
+        >
+          <i class="bi bi-trash"></i> <!-- ايقونة سلة المهملات -->
+        </button>
+      </div>
+
+      <div class="comment-section">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="comment"
+            placeholder="Write a comment..."
+          />
+          <button class="btn btn-success" (click)="addComment(post)">
+            <i class="bi bi-send"></i> <!-- ايقونة ارسال -->
+          </button>
+        </div>
+
+        <div *ngIf="post.comments.length > 0" class="mt-3">
+          <h6>Comments:</h6>
+          <ul class="list-group">
+            <li *ngFor="let comment of post.comments" class="list-group-item">
+              {{ comment }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
-</div>
+
+
 
 <!-- <h2>Parent Component</h2>
  <app-date [childMessage]="messageToChild"></app-date> -->

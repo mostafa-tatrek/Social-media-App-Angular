@@ -1,7 +1,12 @@
-<div class="container">
-  <h2>Register</h2>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="row w-75 shadow-lg p-4 rounded bg-white">
+    <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+      <figure><img src="assets/images/signup-image.jpg" alt="sign in image" class="img-fluid"></figure>
+      </div>
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+  <h2 class="text-center mb-4">Register</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
+    <div class="form-group mb-3">
       <label for="name" class="form-label">Name</label>
       <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter your name">
       <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="text-danger">
@@ -9,7 +14,7 @@
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group mb-3">
       <label for="imgurl" class="form-label">Profile Image URL</label>
       <input type="text" id="imgurl" formControlName="imgurl" class="form-control" placeholder="Image URL">
       <div *ngIf="registerForm.get('imgurl')?.invalid && registerForm.get('imgurl')?.touched" class="text-danger">
@@ -17,17 +22,17 @@
       </div>
     </div>
 
-    <div class="mb-3">
+    <div class="form-group mb-3">
       <label for="password" class="form-label">Password</label>
       <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter password">
       <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
         Password must be at least 6 characters.
       </div>
     </div>
-
     <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Register</button>
   </form>
-
+  </div>
+  </div>
   <p *ngIf="errorMessage" class="text-danger mt-2">{{ errorMessage }}</p>
 </div>
 

@@ -29,9 +29,10 @@ export class FormComponent {
         alert('Please log in first.');
         return;
       }
-
+      this.postsrevice.getPosts().subscribe(posts => {
+        const maxId = posts.length > 0 ? Math.max(...posts.map(p => p.id)) : 0;
       const newPost: IPost = {
-        id: Date.now(),
+        id:  maxId + 1,
         userId: user.id,
         body: this.form.value.body,
         imgurl: this.form.value.imgurl,
@@ -40,9 +41,15 @@ export class FormComponent {
         likes: 0,
         comments: [],
       };
-
-      this.postsrevice.addPost(newPost);
-      this.form.reset();
-    }
+      this.postsrevice.addPost(newPost).subscribe({
+        next: (response) => {
+          this.form.reset();
+        },
+        error: (error) => {
+          console.error('Error adding post:', error);
+        }
+      });
+    });
   }
+}
 }

@@ -1,6 +1,26 @@
-<div class="container">
-  <h2>Login</h2>
-  <input type="text" [(ngModel)]="name" placeholder="Username" class="form-control">
-  <input type="password" [(ngModel)]="password" placeholder="Password" class="form-control">
-  <button (click)="login()" class="btn btn-primary">Login</button>
-</div>
+<!-- Sign in Form -->
+<section class="sign-in">
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row w-75 shadow-lg p-4 rounded bg-white">
+
+      <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+        <figure><img src="assets/images/signin-image.jpg" alt="sign in image" class="img-fluid"></figure>
+        <a [routerLink]="['/register']" class="signup-image-link mt-3">Create an account</a>
+      </div>
+
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <h2 class="text-center mb-4">Login</h2>
+        <div class="form-group mb-3">
+          <input type="text" [(ngModel)]="name" placeholder="Username" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+          <input type="password" [(ngModel)]="password" placeholder="Password" class="form-control">
+        </div>
+        <div class="form-group form-button text-center">
+          <button (click)="login()" class="btn btn-primary w-100">Login</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

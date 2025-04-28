@@ -1,45 +1,31 @@
 import { Injectable } from '@angular/core';
 import { IPost } from '../models/post.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  constructor() {}
-  posts: IPost[] = [
-    {
-      id: 1,
-      userId: 1,
-      body: "Some quick example text to build on the card title and make up the bulk of the card's",
-      imgurl:
-        'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg',
-      islike: false,
-      date: new Date(),
-      likes: 0,
-      comments: [],
-    },
-    {
-      id: 2,
-      userId: 2,
-      body: "Some quick example text to build on the card title and make up the bulk of the card's",
-      imgurl:
-        'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg',
-      islike: true,
-      date: new Date(),
-      likes: 0,
-      comments: [],
-    },
-  ];
-  addPost(post: IPost) {
-    let len = this.posts.length;
-    let id = len > 0 ? this.posts[len - 1].id + 1 : 1;
-    this.posts.push({
-      ...post,
-      id: id,
-    });
+  private apiUrl = 'http://localhost:3000/posts';
+
+  constructor(private http: HttpClient) {}
+
+  getPosts(): Observable<IPost[]> {
+    return this.http.get<IPost[]>(this.apiUrl);
+  }
+  addPost(post: IPost): Observable<IPost> {
+    return this.http.post<IPost>(this.apiUrl, post);
+  }
+  deletePost(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  deletePost(id: number) {
-    this.posts = this.posts.filter((post) => post.id !== id);
+  updatePost(post: IPost): Observable<IPost> {
+    return this.http.put<IPost>(`${this.apiUrl}/${post.id}`, post);
   }
+  getPostById(id: number): Observable<IPost> {
+    return this.http.get<IPost>(`${this.apiUrl}/${id}`);
+  }
+
 }
